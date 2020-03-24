@@ -44,7 +44,7 @@ export const useCheckoutCommunication = (model?: any) => {
   // Once parent is available, we flush the buffer
   useEffect(() => {
     if (parent) {
-      buffer.forEach(event => {
+      buffer.forEach((event) => {
         parent.emit(event.kind, event.payload)
       })
       setBuffer([])

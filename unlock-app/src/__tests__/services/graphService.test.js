@@ -38,7 +38,7 @@ describe('GraphService', () => {
         })
       })
 
-      utils.getAddress = jest.fn(address => {
+      utils.getAddress = jest.fn((address) => {
         return address
       })
 

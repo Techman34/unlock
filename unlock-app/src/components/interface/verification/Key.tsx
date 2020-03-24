@@ -211,7 +211,7 @@ const Box = styled.div`
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 20px;
-  background-color: ${props => `var(${props.color})`};
+  background-color: ${(props) => `var(${props.color})`};
   height: 290px;
   max-width: 290px;
   border-radius: 4px;
@@ -219,7 +219,7 @@ const Box = styled.div`
   text-align: center;
   svg {
     width: 128px;
-    fill: ${props => `var(${props.color})`};
+    fill: ${(props) => `var(${props.color})`};
     margin: 0 auto;
   }
   display: grid;

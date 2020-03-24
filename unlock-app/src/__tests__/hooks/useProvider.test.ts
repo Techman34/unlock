@@ -4,13 +4,13 @@ import React from 'react'
 import { useProvider } from '../../hooks/useProvider'
 import { ConfigContext } from '../../utils/withConfig'
 
-jest.spyOn(Redux, 'useSelector').mockImplementation(selector => {
+jest.spyOn(Redux, 'useSelector').mockImplementation((selector) => {
   return selector({
     provider: 'Unlock',
   })
 })
 
-jest.spyOn(React, 'useContext').mockImplementation(context => {
+jest.spyOn(React, 'useContext').mockImplementation((context) => {
   if (context === ConfigContext) {
     return {
       providers: {

@@ -1,4 +1,4 @@
-window.onload = function() {
+window.onload = function () {
   // Initialize source domain
   let src = window.unlock_url || 'http://localhost:3000'
 
@@ -30,7 +30,7 @@ window.onload = function() {
     let locked = false
     window.addEventListener(
       'message',
-      event => {
+      (event) => {
         if (event.data === 'locked' && !locked) {
           locked = true
           s.style.display = 'block'

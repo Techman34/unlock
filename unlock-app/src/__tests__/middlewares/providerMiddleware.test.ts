@@ -30,10 +30,10 @@ const config = {
       generateSignedEjectionRequest: jest.fn(() => ({ data: {}, sig: {} })),
     },
     NUNLOCK: {
-      enable: jest.fn(() => new Promise(resolve => resolve(true))),
+      enable: jest.fn(() => new Promise((resolve) => resolve(true))),
     },
     METAMASQUE: {
-      enable: jest.fn(() => new Promise(resolve => resolve(true))),
+      enable: jest.fn(() => new Promise((resolve) => resolve(true))),
     },
     NOENABLE: {},
   },
@@ -73,10 +73,10 @@ let dispatch: () => any
 describe('provider middleware', () => {
   beforeEach(() => {
     config.providers.NUNLOCK.enable = jest.fn(
-      () => new Promise(resolve => resolve(true))
+      () => new Promise((resolve) => resolve(true))
     )
     config.providers.METAMASQUE.enable = jest.fn(
-      () => new Promise(resolve => resolve(true))
+      () => new Promise((resolve) => resolve(true))
     )
     dispatch = jest.fn()
   })
@@ -114,7 +114,7 @@ describe('provider middleware', () => {
   })
 
   describe('SET_PROVIDER', () => {
-    it('should initialize the provider when provider is different from one in state', done => {
+    it('should initialize the provider when provider is different from one in state', (done) => {
       expect.assertions(2)
       const next = () => {
         expect(config.providers.METAMASQUE.enable).toHaveBeenCalled()
@@ -125,7 +125,7 @@ describe('provider middleware', () => {
       providerMiddleware(config)({ getState, dispatch })(next)(metamasqueAction)
     })
 
-    it('should set an error and return if there is no matching provider', done => {
+    it('should set an error and return if there is no matching provider', (done) => {
       expect.assertions(3)
       const next = () => {
         expect(config.providers.NUNLOCK.enable).not.toHaveBeenCalled()
@@ -139,7 +139,7 @@ describe('provider middleware', () => {
       providerMiddleware(config)({ getState, dispatch })(next)(erroneousAction)
     })
 
-    it('should set an error and return if the call to enable fails', done => {
+    it('should set an error and return if the call to enable fails', (done) => {
       expect.assertions(2)
       config.providers.METAMASQUE.enable = jest.fn(() => {
         // eslint-disable-next-line promise/param-names
@@ -157,7 +157,7 @@ describe('provider middleware', () => {
       providerMiddleware(config)({ getState, dispatch })(next)(metamasqueAction)
     })
 
-    it('should do nothing if provider is the same as in state', done => {
+    it('should do nothing if provider is the same as in state', (done) => {
       expect.assertions(3)
       const next = () => {
         expect(config.providers.METAMASQUE.enable).not.toHaveBeenCalled()
@@ -169,7 +169,7 @@ describe('provider middleware', () => {
       providerMiddleware(config)({ getState, dispatch })(next)(sameAction)
     })
 
-    it('should do nothing if using unlockProvider', done => {
+    it('should do nothing if using unlockProvider', (done) => {
       expect.assertions(3)
       const next = () => {
         expect(config.providers.METAMASQUE.enable).not.toHaveBeenCalled()

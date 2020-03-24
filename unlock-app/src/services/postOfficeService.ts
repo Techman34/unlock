@@ -35,7 +35,7 @@ export class PostOfficeService extends EventEmitter {
     // when the data iframe requests the current user account
     // or the current network, we respond with the unlock
     // account public key, and the required network
-    this.postOffice.addHandler(PostMessages.SEND_UPDATES, updateType => {
+    this.postOffice.addHandler(PostMessages.SEND_UPDATES, (updateType) => {
       if (updateType === 'account') {
         this.sendAccount()
       }
@@ -43,7 +43,7 @@ export class PostOfficeService extends EventEmitter {
         this.sendNetwork()
       }
     })
-    this.postOffice.addHandler(PostMessages.UPDATE_LOCKS, locks => {
+    this.postOffice.addHandler(PostMessages.UPDATE_LOCKS, (locks) => {
       if (!isValidLocks(locks)) {
         this.emit(PostOfficeEvents.Error, 'invalid locks')
       } else {

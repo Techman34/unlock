@@ -17,7 +17,7 @@ interface Config {
 
 export const useProvider = () => {
   const config: Config = useContext(ConfigContext)
-  const providerName = useSelector<State, string>(state => state.provider)
+  const providerName = useSelector<State, string>((state) => state.provider)
   const provider = config.providers[providerName]
 
   return { provider }

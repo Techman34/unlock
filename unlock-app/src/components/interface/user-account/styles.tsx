@@ -338,8 +338,8 @@ export const StyledCheckbox = styled.div<StyledCheckboxProps>`
   display: inline-block;
   width: 32px;
   height: 32px;
-  background: ${p => (p.checked ? 'var(--white)' : 'var(--lightgrey)')};
-  border: thin ${p => (p.checked ? 'var(--red)' : 'var(--lightgrey)')} solid;
+  background: ${(p) => (p.checked ? 'var(--white)' : 'var(--lightgrey)')};
+  border: thin ${(p) => (p.checked ? 'var(--red)' : 'var(--lightgrey)')} solid;
   border-radius: 3px;
   margin-right: 16px;
   transition: all 100ms;
@@ -347,7 +347,7 @@ export const StyledCheckbox = styled.div<StyledCheckboxProps>`
     box-shadow: 0 0 0 3px var(--blue);
   }
   ${Checkmark} {
-    visibility: ${p => (p.checked ? 'visible' : 'hidden')};
+    visibility: ${(p) => (p.checked ? 'visible' : 'hidden')};
   }
 `
 

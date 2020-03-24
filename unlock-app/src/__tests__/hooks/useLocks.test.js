@@ -45,7 +45,7 @@ describe('useLocks', () => {
   beforeEach(() => {
     jest.clearAllMocks()
 
-    jest.spyOn(React, 'useContext').mockImplementation(context => {
+    jest.spyOn(React, 'useContext').mockImplementation((context) => {
       if (context === Web3ServiceContext) {
         return mockWeb3Service
       }
@@ -61,7 +61,7 @@ describe('useLocks', () => {
     }))
 
     mockWeb3Service = new MockWeb3Service()
-    mockWeb3Service.getLock = jest.fn(address => {
+    mockWeb3Service.getLock = jest.fn((address) => {
       return Promise.resolve({
         address,
         ...web3ServiceLock,
@@ -125,7 +125,7 @@ describe('useLocks', () => {
       // Assume no graph locks for simplicit
       graphLocks = []
 
-      mockWeb3Service.getTransaction = jest.fn(hash => {
+      mockWeb3Service.getTransaction = jest.fn((hash) => {
         mockWeb3Service.emit('transaction.updated', hash, {
           lock: pastTransactions[hash].lock,
         })
@@ -273,7 +273,7 @@ describe('useLocks', () => {
       })
     )
 
-    mockWeb3Service.getTransaction = jest.fn(hash => {
+    mockWeb3Service.getTransaction = jest.fn((hash) => {
       mockWeb3Service.emit('transaction.updated', hash, {
         lock: pastTransactions[hash].lock,
       })
@@ -310,7 +310,7 @@ describe('useLocks', () => {
       })
     })
 
-    it('should generate the lock address', async done => {
+    it('should generate the lock address', async (done) => {
       expect.assertions(1)
       await act(async () => {
         await result.current.addLock(lock, done)
@@ -321,7 +321,7 @@ describe('useLocks', () => {
       )
     })
 
-    it('should create the lock', async done => {
+    it('should create the lock', async (done) => {
       expect.assertions(1)
       await act(async () => {
         await result.current.addLock(lock, done)
@@ -339,7 +339,7 @@ describe('useLocks', () => {
       )
     })
 
-    it('should store the new transaction', async done => {
+    it('should store the new transaction', async (done) => {
       expect.assertions(1)
       await act(async () => {
         await result.current.addLock(lock, done)
@@ -353,7 +353,7 @@ describe('useLocks', () => {
       )
     })
 
-    it('should return the lock as part of the locks state', async done => {
+    it('should return the lock as part of the locks state', async (done) => {
       expect.assertions(1)
       const locksLength = result.current.locks.length
       await act(async () => {

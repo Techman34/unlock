@@ -45,11 +45,11 @@ const postOfficeMiddleware = (window: IframePostOfficeWindow, config: any) => {
   let locksOnPaywall: { [key: string]: any } = {}
 
   return ({ dispatch }: any) => {
-    postOfficeService.on(PostOfficeEvents.Error, message => {
+    postOfficeService.on(PostOfficeEvents.Error, (message) => {
       dispatch(setError(PostOffice.Diagnostic(message)))
     })
 
-    postOfficeService.on(PostOfficeEvents.LockUpdate, locks => {
+    postOfficeService.on(PostOfficeEvents.LockUpdate, (locks) => {
       locksOnPaywall = locks
     })
 

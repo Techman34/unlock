@@ -26,7 +26,7 @@ const mockWalletService = {}
 describe('useLock', () => {
   beforeEach(() => {
     jest.clearAllMocks()
-    jest.spyOn(React, 'useContext').mockImplementation(context => {
+    jest.spyOn(React, 'useContext').mockImplementation((context) => {
       if (context === Web3ServiceContext) {
         return mockWeb3Service
       }
@@ -52,7 +52,7 @@ describe('useLock', () => {
       const update = {
         confirmations: 1,
       }
-      mockWeb3Service.getTransaction = jest.fn(hash => {
+      mockWeb3Service.getTransaction = jest.fn((hash) => {
         return mockWeb3Service.emit('transaction.updated', hash, update)
       })
       const creationTransaction = {
@@ -75,7 +75,7 @@ describe('useLock', () => {
       const update = {
         confirmations: config.requiredConfirmations,
       }
-      mockWeb3Service.getTransaction = jest.fn(hash => {
+      mockWeb3Service.getTransaction = jest.fn((hash) => {
         return mockWeb3Service.emit('transaction.updated', hash, update)
       })
       const creationTransaction = {

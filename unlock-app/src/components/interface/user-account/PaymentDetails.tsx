@@ -88,7 +88,7 @@ export class PaymentForm extends React.Component<
   handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value, name } = e.target
 
-    this.setState(prevState => {
+    this.setState((prevState) => {
       const newState = {
         ...prevState,
         [name]: value,
@@ -133,7 +133,7 @@ export class PaymentForm extends React.Component<
 
   handleReset = () => {
     const { errors, close } = this.props
-    errors.forEach(e => close(e))
+    errors.forEach((e) => close(e))
     this.handleSubmit()
   }
 
@@ -236,7 +236,7 @@ interface ReduxState {
 
 const mapStateToProps = ({ account, errors }: ReduxState) => {
   const storageWarnings = errors.filter(
-    e => isWarningError(e) && e.kind === 'Storage'
+    (e) => isWarningError(e) && e.kind === 'Storage'
   )
 
   return {

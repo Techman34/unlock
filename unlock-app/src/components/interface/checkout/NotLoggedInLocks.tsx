@@ -19,7 +19,7 @@ export const NotLoggedInLocks = ({ lockAddresses }: LocksProps) => {
   if (loading) {
     return (
       <div>
-        {lockAddresses.map(address => (
+        {lockAddresses.map((address) => (
           <LoadingLock key={address} />
         ))}
       </div>
@@ -28,7 +28,7 @@ export const NotLoggedInLocks = ({ lockAddresses }: LocksProps) => {
 
   return (
     <div>
-      {locks.map(lock => (
+      {locks.map((lock) => (
         <DisabledLock
           key={lock.name}
           name={lock.name}

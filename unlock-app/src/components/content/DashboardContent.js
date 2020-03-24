@@ -88,7 +88,7 @@ export const mapStateToProps = ({
   }
 }
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
   showForm: () => dispatch(showForm()),
   hideForm: () => dispatch(hideForm()),
 })

@@ -25,8 +25,8 @@ RoundedLogo.defaultProps = {
 
 const Circle = styled.div`
   background-color: var(--brand);
-  height: ${props => props.size || '56px'};
-  width: ${props => props.size || '56px'};
+  height: ${(props) => props.size || '56px'};
+  width: ${(props) => props.size || '56px'};
   border-radius: 50%;
 
   > svg {

@@ -42,7 +42,7 @@ import Qr from './Qr'
 import Wordpress from './Wordpress'
 
 function wrapViewBox(WrappedComponent, viewBox) {
-  const Wrapped = props => <WrappedComponent viewBox={viewBox} {...props} />
+  const Wrapped = (props) => <WrappedComponent viewBox={viewBox} {...props} />
   return Wrapped
 }
 

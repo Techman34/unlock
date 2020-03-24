@@ -113,14 +113,14 @@ export async function initializeUnlockProvider(
 
 export const providerMiddleware = (config: any) => {
   return ({ getState, dispatch }: { [key: string]: any }) => {
-    return function(next: any) {
+    return function (next: any) {
       // Initialize provider based on the one grabbed in the state. Fragile?
       setTimeout(() => {
         const provider = config.providers[getState().provider]
         initializeProvider(provider, dispatch)
       }, 0)
 
-      return function(action: Action) {
+      return function (action: Action) {
         const providerName = getState().provider
         const provider = config.providers[providerName]
         if (action.type === SET_PROVIDER) {

@@ -86,10 +86,10 @@ const store = createUnlockStore({
 const ConfigProvider = ConfigContext.Provider
 
 storiesOf('LockIconBar', module)
-  .addDecorator(getStory => (
+  .addDecorator((getStory) => (
     <ConfigProvider value={config}>{getStory()}</ConfigProvider>
   ))
-  .addDecorator(getStory => <Provider store={store}>{getStory()}</Provider>)
+  .addDecorator((getStory) => <Provider store={store}>{getStory()}</Provider>)
   .add('LockIconBar, no blocking transaction', () => {
     const lock = {
       address: '0xnoTransaction',

@@ -18,7 +18,7 @@ import { Web3 } from '../utils/Error'
 
 // This middleware listen to redux events and invokes the web3Service API.
 // It also listen to events from web3Service and dispatches corresponding actions
-const web3Middleware = web3Service => {
+const web3Middleware = (web3Service) => {
   return ({ getState, dispatch }) => {
     web3Service.on('account.updated', (account, update) => {
       dispatch(updateAccount(update))
@@ -50,7 +50,7 @@ const web3Middleware = web3Service => {
       dispatch(updateTransaction(transactionHash, update))
     })
 
-    web3Service.on('transaction.new', transactionHash => {
+    web3Service.on('transaction.new', (transactionHash) => {
       dispatch(
         addTransaction({
           hash: transactionHash,
@@ -59,15 +59,15 @@ const web3Middleware = web3Service => {
       )
     })
 
-    web3Service.on('error', error => {
+    web3Service.on('error', (error) => {
       const { message } = error
       // TODO: better handling of these errors? We can't separate them
       // by level right now, so they're all diagnostic.
       dispatch(setError(Web3.Diagnostic(message)))
     })
 
-    return function(next) {
-      return function(action) {
+    return function (next) {
+      return function (action) {
         if (action.type === ADD_TRANSACTION) {
           dispatch(startLoading())
           web3Service
@@ -89,7 +89,7 @@ const web3Middleware = web3Service => {
         if (action.type === CREATE_LOCK && !action.lock.address) {
           web3Service
             .generateLockAddress(action.lock.owner, action.lock)
-            .then(address => {
+            .then((address) => {
               action.lock.address = address
               dispatch(createLock(action.lock))
             })

@@ -56,12 +56,12 @@ export const MembersContent = ({ account, network, lockAddresses }: Props) => {
             <Filter
               value={MemberFilters.ACTIVE}
               current={filter}
-              setFilter={value => setFilter(value)}
+              setFilter={(value) => setFilter(value)}
             />
             <Filter
               value={MemberFilters.ALL}
               current={filter}
-              setFilter={value => setFilter(value)}
+              setFilter={(value) => setFilter(value)}
             />
           </Filters>
           <MetadataTableWrapper
@@ -159,8 +159,8 @@ const StyledFilter = styled.li`
     props.active ? 'not-allowed' : 'pointer'};
   display: inline-block;
   margin: 5px;
-  color: ${props => (props.active ? 'var(--darkgrey)' : 'var(--blue)')};
-  font-weight: ${props => (props.active ? '700' : '300')};
+  color: ${(props) => (props.active ? 'var(--darkgrey)' : 'var(--blue)')};
+  font-weight: ${(props) => (props.active ? '700' : '300')};
 `
 
 export default connect(mapStateToProps)(MembersContent)

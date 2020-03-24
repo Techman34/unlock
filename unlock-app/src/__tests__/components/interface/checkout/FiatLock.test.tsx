@@ -52,7 +52,7 @@ describe('FiatLock', () => {
 
     jest
       .spyOn(useUserAccountsPurchaseKey, 'useUserAccountsPurchaseKey')
-      .mockImplementation(_ => ({
+      .mockImplementation((_) => ({
         purchaseKey,
         loading: false,
         transactionHash: null,
@@ -202,7 +202,7 @@ describe('FiatLock', () => {
 
     jest
       .spyOn(useUserAccountsPurchaseKey, 'useUserAccountsPurchaseKey')
-      .mockImplementation(_ => ({
+      .mockImplementation((_) => ({
         purchaseKey,
         error: null,
         loading: false,

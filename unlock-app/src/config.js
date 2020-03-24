@@ -95,7 +95,7 @@ export default function configure(
     services.wedlocks = {
       host: runtimeConfig.wedlocksUri || 'http://127.0.0.1:1337',
     }
-    isRequiredNetwork = networkId => networkId === 1984
+    isRequiredNetwork = (networkId) => networkId === 1984
   }
 
   // The `unlock-provider-integration` environment is only used in integration tests
@@ -108,7 +108,7 @@ export default function configure(
     services.wedlocks = {
       host: runtimeConfig.wedlocksUri || 'http://127.0.0.1:1337',
     }
-    isRequiredNetwork = networkId => networkId === 1984
+    isRequiredNetwork = (networkId) => networkId === 1984
   }
 
   if (env === 'dev') {
@@ -128,7 +128,7 @@ export default function configure(
 
     // we start ganache locally with a block time of 3
     blockTime = 3000
-    isRequiredNetwork = networkId => networkId === 1984
+    isRequiredNetwork = (networkId) => networkId === 1984
 
     googleClientId = null
     googleApiKey = null
@@ -141,8 +141,8 @@ export default function configure(
 
   if (env === 'staging') {
     // In staging, the network can only be rinkeby
-    isRequiredNetwork = networkId => networkId === 4
-    chainExplorerUrlBuilders.etherScan = address =>
+    isRequiredNetwork = (networkId) => networkId === 4
+    chainExplorerUrlBuilders.etherScan = (address) =>
       `https://rinkeby.etherscan.io/address/${address}`
     requiredNetworkId = 4
     paywallUrl = 'https://'
@@ -161,8 +161,8 @@ export default function configure(
 
   if (env === 'dev-kovan') {
     // In dev-kovan, the network can only be Kovan
-    isRequiredNetwork = networkId => networkId === 42
-    chainExplorerUrlBuilders.etherScan = address =>
+    isRequiredNetwork = (networkId) => networkId === 42
+    chainExplorerUrlBuilders.etherScan = (address) =>
       `https://kovan.etherscan.io/address/${address}`
     requiredNetworkId = 42
     paywallUrl = 'https://'
@@ -181,8 +181,8 @@ export default function configure(
 
   if (env === 'prod') {
     // In prod, the network can only be mainnet
-    isRequiredNetwork = networkId => networkId === 1
-    chainExplorerUrlBuilders.etherScan = address =>
+    isRequiredNetwork = (networkId) => networkId === 1
+    chainExplorerUrlBuilders.etherScan = (address) =>
       `https://etherscan.io/address/${address}`
     requiredNetworkId = 1
 

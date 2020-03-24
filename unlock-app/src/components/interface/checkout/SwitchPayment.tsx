@@ -15,7 +15,7 @@ export const SwitchPayment = ({
   return (
     <Container>
       <Header>Switch payment to</Header>
-      {paymentOptions.map(option => {
+      {paymentOptions.map((option) => {
         if (option === activePayment) {
           return (
             <ActivePaymentOption data-testid={`active-${option}`} key={option}>

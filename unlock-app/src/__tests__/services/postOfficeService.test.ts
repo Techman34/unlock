@@ -107,7 +107,7 @@ describe('postOfficeService', () => {
       )
     })
 
-    it('should add a handler for PostMessages.UPDATE_LOCKS', done => {
+    it('should add a handler for PostMessages.UPDATE_LOCKS', (done) => {
       expect.assertions(1)
       const lockAddress1 = '0x1234567890123456789012345678901234567890'
       const lockAddress2 = '0xa234567890123456789012345678901234567890'
@@ -146,7 +146,7 @@ describe('postOfficeService', () => {
 
       mockService = new PostOfficeService(fakeWindow, 2)
 
-      mockService.on(PostOfficeEvents.LockUpdate, locks => {
+      mockService.on(PostOfficeEvents.LockUpdate, (locks) => {
         expect(locks).toEqual(fakeLocks)
         done()
       })
@@ -154,7 +154,7 @@ describe('postOfficeService', () => {
       triggerListener(PostMessages.UPDATE_LOCKS, fakeLocks)
     })
 
-    it('should error if invalid locks are passed to PostMessages.UPDATE_LOCKS', done => {
+    it('should error if invalid locks are passed to PostMessages.UPDATE_LOCKS', (done) => {
       expect.assertions(1)
       const lockAddress1 = '0x1234567890123456789012345678901234567890'
       const lockAddress2 = '0xa234567890123456789012345678901234567890'
@@ -191,7 +191,7 @@ describe('postOfficeService', () => {
 
       mockService = new PostOfficeService(fakeWindow, 2)
 
-      mockService.on(PostOfficeEvents.Error, message => {
+      mockService.on(PostOfficeEvents.Error, (message) => {
         expect(message).toBe('invalid locks')
         done()
       })
@@ -253,7 +253,7 @@ describe('postOfficeService', () => {
 
       mockService = new PostOfficeService(fakeWindow, 2)
 
-      mockService.on(PostOfficeEvents.Error, error => {
+      mockService.on(PostOfficeEvents.Error, (error) => {
         expect(error).toBe('invalid lock, cannot purchase a key')
       })
 

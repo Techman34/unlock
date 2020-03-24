@@ -21,14 +21,14 @@ describe('usePaywallLocks', () => {
   beforeEach(() => {
     jest.clearAllMocks()
 
-    jest.spyOn(React, 'useContext').mockImplementation(context => {
+    jest.spyOn(React, 'useContext').mockImplementation((context) => {
       if (context === Web3ServiceContext) {
         return mockWeb3Service
       }
     })
 
     mockWeb3Service = new MockWeb3Service()
-    mockWeb3Service.getLock = jest.fn(address => {
+    mockWeb3Service.getLock = jest.fn((address) => {
       return Promise.resolve({
         address,
         ...web3ServiceLock,
@@ -56,7 +56,7 @@ describe('usePaywallLocks', () => {
   it('should query for ERC20 token balance if necessary', async () => {
     expect.assertions(1)
 
-    mockWeb3Service.getLock = jest.fn(address => {
+    mockWeb3Service.getLock = jest.fn((address) => {
       return Promise.resolve({
         address,
         currencyContractAddress: '0xerc20',

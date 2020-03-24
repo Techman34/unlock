@@ -24,12 +24,12 @@ export const Locks = ({
   const { keys } = useKeyOwnershipStatus(lockAddresses, accountAddress)
 
   const now = new Date().getTime() / 1000
-  const activeKeys = keys.filter(key => key.expiration > now)
+  const activeKeys = keys.filter((key) => key.expiration > now)
 
   if (loading) {
     return (
       <div>
-        {lockAddresses.map(address => (
+        {lockAddresses.map((address) => (
           <LoadingLock key={address} />
         ))}
       </div>
@@ -38,7 +38,7 @@ export const Locks = ({
 
   return (
     <div>
-      {locks.map(lock => (
+      {locks.map((lock) => (
         <Lock
           key={lock.name}
           lock={lock}

@@ -27,9 +27,9 @@ export const Web3Provider = ({ setProvider, config, provider }) => (
               <select
                 className="custom-select"
                 value={provider}
-                onChange={event => setProvider(event.target.value)}
+                onChange={(event) => setProvider(event.target.value)}
               >
-                {Object.keys(config.providers).map(name => {
+                {Object.keys(config.providers).map((name) => {
                   return (
                     <option value={name} key={name}>
                       {name}
@@ -56,14 +56,14 @@ Web3Provider.propTypes = {
   config: UnlockPropTypes.configuration.isRequired,
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     provider: state.provider,
   }
 }
 
-const mapDispatchToProps = dispatch => ({
-  setProvider: provider => dispatch(setProvider(provider)),
+const mapDispatchToProps = (dispatch) => ({
+  setProvider: (provider) => dispatch(setProvider(provider)),
 })
 
 export default withConfig(

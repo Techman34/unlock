@@ -29,12 +29,12 @@ export const FiatLocks = ({
   const { keys } = useKeyOwnershipStatus(lockAddresses, accountAddress)
 
   const now = new Date().getTime() / 1000
-  const activeKeys = keys.filter(key => key.expiration > now)
+  const activeKeys = keys.filter((key) => key.expiration > now)
 
   if (loading) {
     return (
       <div>
-        {lockAddresses.map(address => (
+        {lockAddresses.map((address) => (
           <LoadingLock key={address} />
         ))}
       </div>
@@ -43,7 +43,7 @@ export const FiatLocks = ({
 
   return (
     <div>
-      {locks.map(lock => {
+      {locks.map((lock) => {
         if (fiatKeyPrices[lock.address]) {
           // prices returned from locksmith are in cents
           const basePrice = parseInt(fiatKeyPrices[lock.address].usd)

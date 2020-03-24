@@ -18,9 +18,9 @@ const config = configure()
  * This hook yields the list of locks for the owner based on data from the graph and the chain
  * @param {*} address
  */
-export const useLocks = owner => {
+export const useLocks = (owner) => {
   // Let's retrieve the locks!
-  const network = useSelector(state => state.network)
+  const network = useSelector((state) => state.network)
   const web3Service = useContext(Web3ServiceContext)
   const walletService = useContext(WalletServiceContext)
   const storageService = useContext(StorageServiceContext)
@@ -33,14 +33,14 @@ export const useLocks = owner => {
      * Helper Method to sort locks
      * @param {*} locks
      */
-    const sortLocks = locks => {
+    const sortLocks = (locks) => {
       return locks.sort((x, y) => {
         return x.creationBlock < y.creationBlock
       })
     }
 
     const index = locks.findIndex(
-      element => element.address.toLowerCase() === lock.address.toLowerCase()
+      (element) => element.address.toLowerCase() === lock.address.toLowerCase()
     )
     if (index === -1) {
       // New lock, add it
@@ -67,7 +67,7 @@ export const useLocks = owner => {
   /**
    * Helper function: retrieves a lock object at the address
    */
-  const getLockAtAddress = async address => {
+  const getLockAtAddress = async (address) => {
     let lock
     try {
       lock = await web3Service.getLock(address)
@@ -95,7 +95,7 @@ export const useLocks = owner => {
         creationBlock: lock.creationBlock,
       })
       // HACK: We delay each lock retrieval by 300ms to avoid rate limits...
-      await new Promise(resolve => {
+      await new Promise((resolve) => {
         setTimeout(() => {
           resolve()
         }, 300 * index)
@@ -154,7 +154,7 @@ export const useLocks = owner => {
     })
 
     // For each of the hashes, let's retrieve the transaction
-    userTransactions.forEach(transaction => {
+    userTransactions.forEach((transaction) => {
       if (!transactions[transaction.hash]) {
         transactions[transaction.hash] = transaction
       }

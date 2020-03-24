@@ -76,7 +76,7 @@ export const Eth = styled(CurrencySymbol)`
 `
 export const ERC20 = styled(CurrencySymbol)`
   &:before {
-    content: '${props => props.name}';
+    content: '${(props) => props.name}';
   }
 `
 

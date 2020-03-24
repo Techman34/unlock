@@ -3,20 +3,20 @@
 import { setConversionRate } from '../actions/currencyConvert'
 import CurrencyLookupService from '../services/currencyLookupService'
 
-export default config => {
+export default (config) => {
   const { services } = config
   const currencyPriceLookupURI = services.currencyPriceLookup
-  return store => {
+  return (store) => {
     const currencyLookupService = new CurrencyLookupService(
       currencyPriceLookupURI
     )
 
     currencyLookupService
       .lookupPrice('ETH', 'USD')
-      .then(info =>
+      .then((info) =>
         store.dispatch(setConversionRate(info.currency, info.amount))
       )
 
-    return next => action => next(action)
+    return (next) => (action) => next(action)
   }
 }

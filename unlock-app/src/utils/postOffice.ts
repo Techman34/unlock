@@ -81,7 +81,7 @@ export function setupPostOffice<T extends MessageTypes = MessageTypes>(
     )
   }
   const handlers: PostMessageHandlers = {}
-  window.addEventListener('message', event => {
+  window.addEventListener('message', (event) => {
     // **SECURITY CHECKS**
     // ignore messages that do not come from our target window
     if (event.source !== target || event.origin !== targetOrigin) return
@@ -91,7 +91,7 @@ export function setupPostOffice<T extends MessageTypes = MessageTypes>(
     if (typeof event.data.type !== 'string') return
     const listeners = handlers[event.data.type]
     if (listeners && listeners.size) {
-      listeners.forEach(listener => {
+      listeners.forEach((listener) => {
         const responder = (type: T, response: ExtractPayload<T>) => {
           target.postMessage({ type, payload: response }, targetOrigin)
         }

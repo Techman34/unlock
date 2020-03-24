@@ -125,7 +125,7 @@ describe('BalanceProvider Component', () => {
       expect.assertions(1)
       renderIt({
         amount,
-        render: ethValue => {
+        render: (ethValue) => {
           expect(ethValue).toEqual('2.00')
         },
       })

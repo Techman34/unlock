@@ -8,7 +8,7 @@ import { TransactionType } from '../unlockTypes'
  * A hook which yield a lock, tracks its state changes, and (TODO) provides methods to update it
  * @param {*} lock
  */
-export const useLock = lockFromProps => {
+export const useLock = (lockFromProps) => {
   const [lock, setLock] = useState(lockFromProps)
   const web3Service = useContext(Web3ServiceContext)
   const walletService = useContext(WalletServiceContext)
@@ -21,7 +21,7 @@ export const useLock = lockFromProps => {
    */
   const onTransaction = (hash, update) => {
     const lockTransactions = ['creationTransaction', 'priceUpdateTransaction']
-    lockTransactions.forEach(transaction => {
+    lockTransactions.forEach((transaction) => {
       if (lock[transaction] && hash === lock[transaction].hash) {
         lock[transaction] = {
           ...lock[transaction],

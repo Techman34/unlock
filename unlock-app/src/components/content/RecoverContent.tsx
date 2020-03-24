@@ -71,7 +71,7 @@ export const RecoverContent = ({
       <SetPassword
         buttonLabel="Resetting password"
         emailAddress={emailAddress}
-        onSubmit={credentials => changePassword(credentials, recoveryPhrase)}
+        onSubmit={(credentials) => changePassword(credentials, recoveryPhrase)}
       />
     )
   }
