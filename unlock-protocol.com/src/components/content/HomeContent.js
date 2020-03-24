@@ -44,7 +44,7 @@ const integrations = [
   },
 ]
 export const HomeContent = () => {
-  let { isMember, becomeMember } = useContext(MembershipContext)
+  const { isMember, becomeMember } = useContext(MembershipContext)
   return (
     <Layout forContent>
       <Head>

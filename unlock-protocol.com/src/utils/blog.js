@@ -11,17 +11,17 @@ const rss = require('rss')
  */
 const generateBlogFeed = (basedir) => {
   // Find blog posts to export and render them as static pages (*.md files in the /blog folder)
-  let blogDir = join(basedir, 'blog')
-  let posts = fs.readdirSync(blogDir)
-  let postFeed = [] // We will use this to populate the homepage and (later) an RSS feed
+  const blogDir = join(basedir, 'blog')
+  const posts = fs.readdirSync(blogDir)
+  const postFeed = [] // We will use this to populate the homepage and (later) an RSS feed
 
   // Establish a page route for each valid blog post
   posts.forEach((postFile) => {
     if (postFile.substr(-3) === '.md') {
-      let slug = postFile.substr(0, postFile.length - 3)
+      const slug = postFile.substr(0, postFile.length - 3)
 
       // Cache post metadata for feed; used in blog homepage and eventually RSS
-      let post = yamlFront.loadFront(fs.readFileSync(join(blogDir, postFile)))
+      const post = yamlFront.loadFront(fs.readFileSync(join(blogDir, postFile)))
       post.slug = slug
       delete post.__content // We don't need to store the content of the post here
 
@@ -43,10 +43,10 @@ const generateBlogFeed = (basedir) => {
  * @returns {Array}
  */
 const generatePostPages = (postFeed) => {
-  let pages = {}
+  const pages = {}
 
   postFeed.forEach((postFile) => {
-    pages['/blog/' + postFile.slug] = {
+    pages[`/blog/${postFile.slug}`] = {
       page: '/post',
       query: { slug: postFile.slug },
     }
@@ -73,7 +73,7 @@ const generateBlogIndexFile = (baseDir, postFeed, callback) => {
  * This function generates the URL for each paginated page
  */
 const generateBlogPages = (numberOfPosts, postsPerPage) => {
-  let pages = {}
+  const pages = {}
 
   const numberOfPages = Math.ceil(numberOfPosts / postsPerPage)
 
@@ -94,13 +94,13 @@ const generateBlogPages = (numberOfPosts, postsPerPage) => {
  */
 const generateRSSFile = (baseDir, postFeed, unlockUrl, callback) => {
   // Build list of items that don't have future publish dates
-  let now = Date.now()
+  const now = Date.now()
 
   const rssFeed = new rss({
     title: 'Unlock Blog',
     description: "News and updates from the Web's new business model.",
-    site_url: unlockUrl + '/blog',
-    feed_url: unlockUrl + '/static/blog.rss',
+    site_url: `${unlockUrl}/blog`,
+    feed_url: `${unlockUrl}/static/blog.rss`,
     generator: 'Unlock Blog Engine',
   })
 
@@ -109,7 +109,7 @@ const generateRSSFile = (baseDir, postFeed, unlockUrl, callback) => {
       rssFeed.item({
         title: post.title,
         description: post.description,
-        url: unlockUrl + '/blog/' + post.slug,
+        url: `${unlockUrl}/blog/${post.slug}`,
         author: post.authorName,
         date: Date.parse(post.publishDate),
       })
@@ -130,9 +130,9 @@ const generateRSSFile = (baseDir, postFeed, unlockUrl, callback) => {
  * @returns {}
  */
 const addBlogPagesToPageObject = (dir, pages) => {
-  let blogFeed = generateBlogFeed(dir)
-  let postPages = generatePostPages(blogFeed)
-  let blogPages = generateBlogPages(blogFeed.length, 10)
+  const blogFeed = generateBlogFeed(dir)
+  const postPages = generatePostPages(blogFeed)
+  const blogPages = generateBlogPages(blogFeed.length, 10)
   return { ...pages, ...postPages, ...blogPages }
 }
 

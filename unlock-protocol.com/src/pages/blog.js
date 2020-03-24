@@ -18,7 +18,7 @@ const Blog = ({ posts, page, totalPages }) => {
   if (page > 1) {
     title += ` - Page ${page}`
   }
-  let description = 'News and updates from the Unlock Protocol team.'
+  const description = 'News and updates from the Unlock Protocol team.'
 
   return (
     <Layout forContent>
