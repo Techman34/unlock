@@ -20,7 +20,7 @@ const lockAddress = '0x95de5F777A3e283bFf0c47374998E10D8A2183C7'
 const owningAddress = '0xAaAdEED4c0B861cB36f4cE006a9C90BA2E43fdc2'
 
 jest.mock('../../../src/utils/lockData', () => {
-  return function() {
+  return function () {
     return mockOnChainLockOwnership
   }
 })
