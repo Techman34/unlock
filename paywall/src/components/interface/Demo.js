@@ -181,7 +181,7 @@ const Illustration = styled.div`
 const CallToAction = styled.p`
   text-align: center;
   font-size: 1.2em;
-  display: ${props => (props.locked === 'locked' ? 'block' : 'none')};
+  display: ${(props) => (props.locked === 'locked' ? 'block' : 'none')};
 `
 
 const Button = styled.button`
@@ -199,13 +199,13 @@ const Button = styled.button`
 `
 
 const Locked = styled.p`
-  display: ${props =>
+  display: ${(props) =>
     props.locked === 'unlocked' || props.overlay ? 'block' : 'none'};
   position: relative; // Important to make the overlay work
 `
 
 const Overlay = styled.span`
-  display: ${props => (props.locked === 'unlocked' ? 'none' : 'block')};
+  display: ${(props) => (props.locked === 'unlocked' ? 'none' : 'block')};
   position: absolute;
   background: linear-gradient(rgb(253, 250, 247, 0), rgb(253, 250, 247, 1) 70%);
   top: 0;

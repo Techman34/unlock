@@ -5,7 +5,7 @@ import { PostMessages } from '../messageTypes'
 export default function usePurchaseKey(purchaseKey, openInNewWindow) {
   const { postMessage } = usePostMessage('usePurchaseKey')
   return useCallback(
-    key => {
+    (key) => {
       if (openInNewWindow) {
         return postMessage(PostMessages.REDIRECT)
       }

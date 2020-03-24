@@ -244,7 +244,7 @@ describe('Form field validators', () => {
 
         it.each([noConfirmed, noPending, noExpired, noDefault])(
           'callToAction has unrecognized keys',
-          defaults => {
+          (defaults) => {
             expect.assertions(1)
 
             expect(
@@ -261,7 +261,7 @@ describe('Form field validators', () => {
 
         it.each(['default', 'expired', 'pending', 'confirmed'])(
           'callToAction.%s is malformed',
-          key => {
+          (key) => {
             expect.assertions(5)
 
             expect(
@@ -1044,7 +1044,7 @@ describe('Form field validators', () => {
           'submitted',
           'pending',
           'failed',
-        ])('should accept "%s" as a valid status', status => {
+        ])('should accept "%s" as a valid status', (status) => {
           expect.assertions(1)
 
           expect(

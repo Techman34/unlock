@@ -26,7 +26,7 @@ let mockWalletService: WalletServiceType
 let mockWeb3Service: Web3ServiceType
 jest.mock('@unlock-protocol/unlock-js', () => {
   return {
-    WalletService: jest.fn(function() {
+    WalletService: jest.fn(function () {
       mockWalletService = getWalletService({})
       mockWalletService.connect = jest.fn((provider: any) => {
         mockWalletService.provider = provider
@@ -34,7 +34,7 @@ jest.mock('@unlock-protocol/unlock-js', () => {
       })
       return mockWalletService
     }),
-    Web3Service: jest.fn(function() {
+    Web3Service: jest.fn(function () {
       mockWeb3Service = getWeb3Service({})
       return mockWeb3Service
     }),
@@ -78,12 +78,12 @@ describe('Mailbox - init', () => {
     expect.assertions(1)
 
     setupDefaults(false)
-    ;(unlock.WalletService as any).mockImplementationOnce(function() {
+    ;(unlock.WalletService as any).mockImplementationOnce(function () {
       mockWalletService = getWalletService({})
       mockWalletService.connect = jest.fn((provider: any) => {
         mockWalletService.provider = provider
         // eslint-disable-next-line promise/param-names
-        return new Promise(_ => {}) // never resolve
+        return new Promise((_) => {}) // never resolve
       })
       return mockWalletService
     })
@@ -100,7 +100,7 @@ describe('Mailbox - init', () => {
   describe('errors', () => {
     beforeEach(() => {
       setupDefaults(false)
-      ;(unlock.WalletService as any).mockImplementationOnce(function() {
+      ;(unlock.WalletService as any).mockImplementationOnce(function () {
         mockWalletService = getWalletService({})
         mockWalletService.connect = jest.fn((provider: any) => {
           mockWalletService.provider = provider
@@ -110,7 +110,7 @@ describe('Mailbox - init', () => {
       })
     })
 
-    it('should emit an error if connecting to the provider fails', async done => {
+    it('should emit an error if connecting to the provider fails', async (done) => {
       expect.assertions(1)
 
       mailbox.emitError = (e: Error) => {

@@ -65,7 +65,7 @@ const Message = styled.div`
 
   & > h1 {
     font-weight: bold;
-    color: ${props => (props.critical ? 'var(--red)' : 'var(--grey)')};
+    color: ${(props) => (props.critical ? 'var(--red)' : 'var(--grey)')};
     margin: 0px;
     padding: 0px;
   }

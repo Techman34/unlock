@@ -11,7 +11,7 @@ describe('BlockchainHandler - makeDefaultKeys', () => {
         '0x15B87bdC4B3ecb783F56f735653332EAD3BCa5F8',
         '0xBF7F1bdB3a2D6c318603FFc8f39974e597b6af5e',
       ]
-      const lowerAddresses = addresses.map(address => address.toLowerCase())
+      const lowerAddresses = addresses.map((address) => address.toLowerCase())
       const expectedKeys = {
         [lowerAddresses[0].toLowerCase()]: {
           lock: lowerAddresses[0],

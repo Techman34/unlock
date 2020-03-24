@@ -21,7 +21,7 @@ describe('no localStorage', () => {
       storage: {},
       localStorage: {
         setItem: jest.fn((x, y) => (fakeWindow.storage[x] = y)),
-        getItem: jest.fn(x => fakeWindow.storage[x]),
+        getItem: jest.fn((x) => fakeWindow.storage[x]),
         removeItem: () => {},
       },
     }

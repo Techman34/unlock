@@ -38,7 +38,7 @@ describe('useLocksmith hook', () => {
       thing: '1',
     }
     fakeWindow = {}
-    fakeLocksmithFetch(fakeWindow, resolve => (finishFetch = resolve))
+    fakeLocksmithFetch(fakeWindow, (resolve) => (finishFetch = resolve))
   })
 
   it('passes the correct URL to fetch', () => {

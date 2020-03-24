@@ -18,7 +18,7 @@ export const ETHEREUM_NETWORKS_NAMES = {
  * @param title
  * @returns {string}
  */
-export const pageTitle = title => {
+export const pageTitle = (title) => {
   let pageTitle = ''
   if (title) pageTitle += `${title} | `
   return (pageTitle += "Unlock: The Web's new business model")
@@ -129,4 +129,4 @@ export const STABLECOINS_ADDRESSES = [
   '0x6b175474e89094c44da98b954eedeac495271d0f', // DAI
   '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48', // USDC
   '0xaFF4481D10270F50f203E0763e2597776068CBc5', // WEENUS
-].map(address => address.toLowerCase())
+].map((address) => address.toLowerCase())

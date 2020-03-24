@@ -7,7 +7,7 @@ declare let __ENVIRONMENT_VARIABLES__: any
 
 export const makeLockFilter = (lockAddresses: string[]) => {
   return lockAddresses
-    .map(lockAddress => `recipient[]=${encodeURIComponent(lockAddress)}`)
+    .map((lockAddress) => `recipient[]=${encodeURIComponent(lockAddress)}`)
     .join('&')
 }
 

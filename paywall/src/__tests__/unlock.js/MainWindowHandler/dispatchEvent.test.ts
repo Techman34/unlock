@@ -35,7 +35,7 @@ describe('MainWindowHandler - dispatchEvent', () => {
 
   it('should create an event the old way if the new way is unsupported', () => {
     expect.assertions(2)
-    ;(fakeWindow as any).CustomEvent = function() {
+    ;(fakeWindow as any).CustomEvent = function () {
       throw new Error('unsupported')
     }
     fakeWindow.document.createEvent = (type: string) => {

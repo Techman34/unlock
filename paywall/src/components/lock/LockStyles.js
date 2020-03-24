@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import Media from '../../theme/media'
 
-export const LockWrapper = styled.li.attrs(props => ({
+export const LockWrapper = styled.li.attrs((props) => ({
   className: 'lock',
   'data-address': props.lock ? props.lock.address : '',
 }))`
@@ -63,7 +63,7 @@ export const LockBody = styled.div`
 
 export const LockDetail = styled.div`
   white-space: nowrap;
-  font-weight: ${props => (props.bold === true ? 'bold' : null)};
+  font-weight: ${(props) => (props.bold === true ? 'bold' : null)};
   align-content: center;
   align-items: center;
   align-self: center;

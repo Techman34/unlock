@@ -53,7 +53,7 @@ export const Wrapper: React.FunctionComponent<WrapperProps> = ({
         hideCheckout={hideCheckout}
         bgColor="var(--offwhite)"
         allowClose={allowClose}
-        onClick={e => {
+        onClick={(e) => {
           e.stopPropagation()
         }}
         icon={config.icon}

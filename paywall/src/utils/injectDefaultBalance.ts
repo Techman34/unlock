@@ -4,7 +4,7 @@ import { DEFAULT_STABLECOIN_BALANCE, STABLECOINS_ADDRESSES } from '../constants'
 export const injectDefaultBalance = (oldBalance: Balance): Balance => {
   const newBalance: Balance = {}
   const tokens = Object.keys(oldBalance)
-  tokens.forEach(token => {
+  tokens.forEach((token) => {
     if (STABLECOINS_ADDRESSES.indexOf(token.toLowerCase()) > -1) {
       // If the token is the one we allow, we give the user a default
       // balance. TODO: only do this if the corresponding lock is approved.

@@ -74,14 +74,14 @@ export const Checkout = ({
 
   // Here we need to pick the right checkout message based on the keys!
   const lockKeys: Key[] = []
-  lockAddresses.forEach(lockAddress => {
+  lockAddresses.forEach((lockAddress) => {
     const lock = locks[lockAddress]
     if (lock) {
       lockKeys.push(lock.key)
     }
   })
 
-  const statuses = lockKeys.map(k => k.status as KeyStatus)
+  const statuses = lockKeys.map((k) => k.status as KeyStatus)
   const highestStatus = getHighestStatus(statuses)
   const callToAction = getCallToAction(config.callToAction, highestStatus)
 

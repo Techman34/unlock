@@ -24,7 +24,7 @@ export default class Web3ProxyProvider {
     this.waiting = true
 
     // this is the postMessage version of connecting to the wallet
-    addHandler(PostMessages.WALLET_INFO, walletInfo => {
+    addHandler(PostMessages.WALLET_INFO, (walletInfo) => {
       if (!walletInfo || typeof walletInfo !== 'object') {
         return
       }
@@ -36,7 +36,7 @@ export default class Web3ProxyProvider {
     })
 
     // this is the postMessage version of the callback for sendAsync
-    addHandler(PostMessages.WEB3, web3Result => {
+    addHandler(PostMessages.WEB3, (web3Result) => {
       if (
         !web3Result.hasOwnProperty('error') &&
         !web3Result.hasOwnProperty('result')

@@ -67,7 +67,7 @@ Post.propTypes = {
   post: UnlockPropTypes.post.isRequired,
 }
 
-Post.getInitialProps = async context => {
+Post.getInitialProps = async (context) => {
   const { slug } = context.query
   return await preparePostProps(slug)
 }

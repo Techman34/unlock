@@ -10,7 +10,7 @@ export default function useLocksmith(api, defaultValue, active = true) {
   const window = useWindow()
   const { locksmithUri } = useConfig()
   const [result, setResult] = useState(defaultValue)
-  const [reSend, reSendQuery] = useReducer(state => state + 1, 0)
+  const [reSend, reSendQuery] = useReducer((state) => state + 1, 0)
 
   const { fetch } = window
   // remove double / if there are any
@@ -19,9 +19,9 @@ export default function useLocksmith(api, defaultValue, active = true) {
   useEffect(() => {
     if (!active) return
     fetch(url)
-      .then(response => response.json())
-      .then(result => setResult(result))
-      .catch(error => console.error(error)) // eslint-disable-line no-console
+      .then((response) => response.json())
+      .then((result) => setResult(result))
+      .catch((error) => console.error(error)) // eslint-disable-line no-console
   }, [api, reSend, active, fetch, url])
   return [result, reSendQuery]
 }

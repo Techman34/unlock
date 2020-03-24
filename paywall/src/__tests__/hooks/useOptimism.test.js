@@ -40,7 +40,7 @@ describe('useOptimism hook', () => {
       willSucceed: 1,
     }
     fakeWindow = {}
-    fakeLocksmithFetch(fakeWindow, resolve => (finishFetch = resolve))
+    fakeLocksmithFetch(fakeWindow, (resolve) => (finishFetch = resolve))
     transaction = {
       hash: '0x123',
       status: 'pending',

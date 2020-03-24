@@ -78,20 +78,20 @@ The Unlock team
         config.googleAnalyticsId !== '0'
       ) {
         ReactGA.initialize(config.googleAnalyticsId)
-        this.setState(state => ({
+        this.setState((state) => ({
           ...state,
           gaInitialized: true,
         }))
       }
 
-      window.addEventListener('unlockProtocol', event => {
+      window.addEventListener('unlockProtocol', (event) => {
         if (event.detail === 'unlocked') {
           if (this.state.gaInitialized)
             ReactGA.event({
               category: GA_LABELS.MEMBERSHIP,
               action: GA_ACTIONS.UNLOCKED,
             })
-          this.setState(state => ({
+          this.setState((state) => ({
             ...state,
             isMember: 'yes',
           }))
@@ -102,7 +102,7 @@ The Unlock team
               category: GA_LABELS.MEMBERSHIP,
               action: GA_ACTIONS.LOCKED,
             })
-          this.setState(state => ({
+          this.setState((state) => ({
             ...state,
             isMember: 'no',
           }))

@@ -93,7 +93,7 @@ export const addresses = [
   '0x15B87bdC4B3ecb783F56f735653332EAD3BCa5F8',
   '0xBF7F1bdB3a2D6c318603FFc8f39974e597b6af5e',
 ]
-export const lockAddresses = addresses.map(address => address.toLowerCase())
+export const lockAddresses = addresses.map((address) => address.toLowerCase())
 
 export type OptionalBlockchainValues = Partial<PaywallState>
 

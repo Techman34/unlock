@@ -85,7 +85,7 @@ describe('setupWeb3ProxyWallet()', () => {
       )
     })
 
-    it('should send WALLET_INFO indicating there is a crypto wallet and has been enabled', done => {
+    it('should send WALLET_INFO indicating there is a crypto wallet and has been enabled', (done) => {
       expect.assertions(2)
 
       const setHasWeb3 = jest.fn()
@@ -110,7 +110,7 @@ describe('setupWeb3ProxyWallet()', () => {
       expect(setHasWeb3).toHaveBeenCalledWith(true)
     })
 
-    it('should send WALLET_INFO indicating the user declined to enable their wallet', done => {
+    it('should send WALLET_INFO indicating the user declined to enable their wallet', (done) => {
       expect.assertions(2)
 
       const setHasWeb3 = jest.fn()

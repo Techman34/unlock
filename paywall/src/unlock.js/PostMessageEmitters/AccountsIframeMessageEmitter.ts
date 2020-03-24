@@ -127,10 +127,10 @@ export default class AccountsIframeMessageEmitter extends FancyEmitter {
       this.sendBufferedMessages()
       this.emit(PostMessages.READY)
     })
-    this.addHandler(PostMessages.UPDATE_ACCOUNT, account =>
+    this.addHandler(PostMessages.UPDATE_ACCOUNT, (account) =>
       this.emit(PostMessages.UPDATE_ACCOUNT, account)
     )
-    this.addHandler(PostMessages.UPDATE_NETWORK, network =>
+    this.addHandler(PostMessages.UPDATE_NETWORK, (network) =>
       this.emit(PostMessages.UPDATE_NETWORK, network)
     )
     this.addHandler(PostMessages.INITIATED_TRANSACTION, () =>

@@ -39,7 +39,7 @@ describe('blog', () => {
       readdirSync: jest.fn(() => {
         return ['test1.md', 'test2.md', 'test3.txt']
       }),
-      readFileSync: jest.fn(filename => MOCK_FILE_INFO[filename]),
+      readFileSync: jest.fn((filename) => MOCK_FILE_INFO[filename]),
       writeFile: jest.fn((filename, data, callback) => {
         writtenData = data
         return callback()
@@ -95,7 +95,7 @@ describe('blog', () => {
     expect(pages['/blog/4'].query.slug).toEqual('4')
   })
 
-  it('should generate a blog index file from a blog index array', done => {
+  it('should generate a blog index file from a blog index array', (done) => {
     expect.assertions(1)
 
     const blog = require('../../utils/blog')
@@ -107,7 +107,7 @@ describe('blog', () => {
     })
   })
 
-  it('should generate a blog RSS feed from a blog index array', done => {
+  it('should generate a blog RSS feed from a blog index array', (done) => {
     expect.assertions(6)
 
     const blog = require('../../utils/blog')

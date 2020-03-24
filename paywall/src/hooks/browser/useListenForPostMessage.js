@@ -56,7 +56,7 @@ export default function useListenForPostMessage({
   useEffect(() => {
     if (isServer || !isInIframe) return
 
-    const saveData = event => {
+    const saveData = (event) => {
       // origin is passed in by the paywall, see paywall-builder/build.js
       const { origin } = getRouteFromWindow(window)
       // **SECURITY CHECKS**

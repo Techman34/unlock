@@ -145,14 +145,14 @@ export default class BlockchainHandler {
     this.store = store
 
     // retrieve the locks
-    this.lockAddresses.forEach(address =>
-      this.web3Service.getLock(address).catch(error => this.emitError(error))
+    this.lockAddresses.forEach((address) =>
+      this.web3Service.getLock(address).catch((error) => this.emitError(error))
     )
 
     // poll for account changes
     const retrieveAccount = () => {
       if (!this.walletService.provider) return
-      this.walletService.getAccount().catch(error => this.emitError(error))
+      this.walletService.getAccount().catch((error) => this.emitError(error))
     }
     const pollForAccountChanges = () => {
       retrieveAccount()
@@ -191,7 +191,7 @@ export default class BlockchainHandler {
   async retrieveCurrentBlockchainData() {
     // set up any missing keys prior to retrieval
     const defaultKeys = makeDefaultKeys(this.lockAddresses, this.store.account)
-    this.lockAddresses.forEach(address => {
+    this.lockAddresses.forEach((address) => {
       if (!this.store.keys[address]) {
         this.store.keys[address] = defaultKeys[address]
       }
@@ -208,10 +208,10 @@ export default class BlockchainHandler {
       return
     }
     // first get keys
-    this.lockAddresses.map(address => {
+    this.lockAddresses.map((address) => {
       return this.web3Service
         .getKeyByLockForOwner(address, this.store.account as string)
-        .catch(error => this.emitError(error))
+        .catch((error) => this.emitError(error))
     })
 
     // no locks, no transactions can exist
@@ -494,7 +494,7 @@ export default class BlockchainHandler {
       // for now, we will kill all submitted transactions and re-fetch
       this.store.transactions = Object.keys(this.store.transactions)
         .filter(
-          hash =>
+          (hash) =>
             this.store.transactions[hash].status !== TransactionStatus.SUBMITTED
         )
         .reduce(
@@ -543,7 +543,7 @@ export default class BlockchainHandler {
     // transactions relevant to locks. In most cases this will be
     // key purchases
     const filterLocks = this.lockAddresses
-      .map(lockAddress => `recipient[]=${encodeURIComponent(lockAddress)}`)
+      .map((lockAddress) => `recipient[]=${encodeURIComponent(lockAddress)}`)
       .join('&')
 
     const url = `${this.constants.locksmithUri}/transactions?for=${this.store.account}&${filterLocks}`
@@ -554,7 +554,7 @@ export default class BlockchainHandler {
     } = await response.json()
     if (result.transactions) {
       result.transactions
-        .map(t => ({
+        .map((t) => ({
           createdAt: new Date(t.createdAt),
           hash: t.transactionHash,
           network: t.chain,
@@ -698,7 +698,7 @@ export default class BlockchainHandler {
       this.web3Service.refreshAccountBalance({ address: this.store.account })
       // We need to refresh ERC20 token balances whenever we reset
       const erc20locks = Object.values(this.store.locks).filter(isERC20Lock)
-      erc20locks.forEach(lock =>
+      erc20locks.forEach((lock) =>
         this.getTokenBalance(lock.currencyContractAddress!)
       )
     }

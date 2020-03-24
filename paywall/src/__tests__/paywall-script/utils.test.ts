@@ -9,7 +9,7 @@ describe('Paywall script utils', () => {
       expect.assertions(1)
 
       // awkward implementation because it needs to be "newable"
-      const CustomEvent = jest.fn(function() {
+      const CustomEvent = jest.fn(function () {
         return { event: 'custom' }
       })
       const windowDispatchEvent = jest.fn()
@@ -30,7 +30,7 @@ describe('Paywall script utils', () => {
       }))
       const windowDispatchEvent = jest.fn()
 
-        // Need to delete this from the last test
+      // Need to delete this from the last test
       ;(global as any).CustomEvent = undefined
       ;(global as any).document.createEvent = createEvent
       ;(global as any).dispatchEvent = windowDispatchEvent

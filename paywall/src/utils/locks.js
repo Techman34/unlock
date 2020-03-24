@@ -19,7 +19,7 @@ export function currencySymbolForLock(lock, config) {
  * Returns true if the keys for `lock` are priced in ERC20, false otherwise.
  * @param {*} lock
  */
-export const isERC20Lock = lock => {
+export const isERC20Lock = (lock) => {
   return !!lock.currencyContractAddress
 }
 
@@ -27,7 +27,7 @@ export const isERC20Lock = lock => {
  * Returns true if the keys for `lock` are priced in Eth, false otherwise.
  * @param {*} lock
  */
-export const isEthLock = lock => {
+export const isEthLock = (lock) => {
   return !lock.currencyContractAddress
 }
 

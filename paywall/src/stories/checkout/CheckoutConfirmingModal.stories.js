@@ -38,7 +38,7 @@ const account = {
 }
 
 storiesOf('Checkout/Checkout Confirming modal', module)
-  .addDecorator(getStory => (
+  .addDecorator((getStory) => (
     <CheckoutWrapper
       hideCheckout={() => action('hideCheckout')}
       icon={paywallConfig.icon}
@@ -46,7 +46,7 @@ storiesOf('Checkout/Checkout Confirming modal', module)
       {getStory()}
     </CheckoutWrapper>
   ))
-  .addDecorator(getStory => (
+  .addDecorator((getStory) => (
     <ConfigProvider value={config}>{getStory()}</ConfigProvider>
   ))
   .add('CheckoutConfirmingModal with a submitted key purchase', () => {

@@ -11,7 +11,7 @@ export function getTransactionsFor(
   transactions: Transactions,
   key: KeyResult
 ): Transaction[] {
-  return Object.values(transactions).filter(tx => tx.lock === key.lock)
+  return Object.values(transactions).filter((tx) => tx.lock === key.lock)
 }
 
 export function getLatestTransaction(transactions: Transaction[]): Transaction {
@@ -70,7 +70,7 @@ export function getKeyStatus(
 // Given the status of all members of a set of keys, return the one that takes precedence.
 export function getHighestStatus(statuses: KeyStatus[]): KeyStatus {
   let table: { [key in KeyStatus]?: KeyStatus } = {}
-  statuses.forEach(status => (table[status] = status))
+  statuses.forEach((status) => (table[status] = status))
 
   return (
     table[KeyStatus.VALID] ||

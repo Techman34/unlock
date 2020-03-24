@@ -202,7 +202,7 @@ export default class FakeWindow
       },
     }
     this.messageListeners.message &&
-      this.messageListeners.message.forEach(handler => handler(event))
+      this.messageListeners.message.forEach((handler) => handler(event))
   }
 
   public receivePostMessageFromIframe<T extends PostMessages = PostMessages>(
@@ -220,7 +220,7 @@ export default class FakeWindow
       },
     }
     this.messageListeners.message &&
-      this.messageListeners.message.forEach(handler => handler(event))
+      this.messageListeners.message.forEach((handler) => handler(event))
   }
 
   public receiveStorageEvent(key: string, newValue: string, oldValue: string) {
@@ -231,7 +231,7 @@ export default class FakeWindow
       storageArea: this.localStorage,
     }
     this.storageListeners.storage &&
-      this.storageListeners.storage.forEach(handler => handler(event))
+      this.storageListeners.storage.forEach((handler) => handler(event))
   }
 
   public waitForPostMessageToIframe(iframe: IframeType) {
@@ -312,7 +312,7 @@ export default class FakeWindow
   public respondToWeb3(netversion: number, account: string | null) {
     const accountResponse = account ? [account] : []
 
-    this.parent.postMessage = jest.fn(message => {
+    this.parent.postMessage = jest.fn((message) => {
       const constructResult = (result: any): web3MethodResult => {
         return {
           id: message.payload.id,

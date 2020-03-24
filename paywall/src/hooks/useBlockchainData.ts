@@ -103,7 +103,7 @@ export default function useBlockchainData(
   const blockChainLockAddresses = Object.keys(blockChainLocks)
 
   // filter out any locks that are not on this paywall
-  const filteredLockAddresses = blockChainLockAddresses.filter(address =>
+  const filteredLockAddresses = blockChainLockAddresses.filter((address) =>
     paywallLockAddresses.includes(address)
   )
   if (filteredLockAddresses.length !== blockChainLockAddresses.length) {

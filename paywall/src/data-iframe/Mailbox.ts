@@ -51,14 +51,14 @@ export const gotAllKeysFromChain = (
 
   // Every lock address in the paywall config must have a matching key
   // (whether valid or not) for us to have gotten all data from the chain
-  const haveAKeyForEachLock = lockAddresses.every(address => {
+  const haveAKeyForEachLock = lockAddresses.every((address) => {
     return keys[address]
   })
 
   // All keys that come from web3service have `expiration` >= 0
   // So if all keys in the blockchain data satisfy that constraint, they all
   // came from web3Service
-  const allKeysAreReal = Object.values(keys).every(key => key.expiration >= 0)
+  const allKeysAreReal = Object.values(keys).every((key) => key.expiration >= 0)
 
   return haveAKeyForEachLock && allKeysAreReal
 }
@@ -104,7 +104,7 @@ export const getPaywallStatus = (
 
 export const getUnlockedLockAddresses = (keys: KeyResults): string[] => {
   const unexpiredKeys = Object.values(keys).filter(isUnexpired)
-  return unexpiredKeys.map(k => k.lock)
+  return unexpiredKeys.map((k) => k.lock)
 }
 
 export default class Mailbox {
@@ -202,7 +202,7 @@ export default class Mailbox {
     if (!this.useLocalStorageCache) return
     // TODO: check to see if there are any changes to the keys and don't retrieve if not
     // Issues that reference this: #4381 #4411
-    this.window.addEventListener(EventTypes.STORAGE, event => {
+    this.window.addEventListener(EventTypes.STORAGE, (event) => {
       if (!this.configuration || !this.handler) return
       if (event.key === this.getCacheKey()) {
         // another tab has done something that affects our data, so
@@ -497,7 +497,7 @@ export default class Mailbox {
     }
     if (
       keys.filter(
-        key =>
+        (key) =>
           ![
             'locks',
             'account',

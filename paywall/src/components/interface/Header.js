@@ -16,12 +16,14 @@ const navigationButtons = [
 
 export function Header({ title }) {
   const [menu, setMenu] = useState(false)
-  const toggleMenu = useCallback(() => setMenu(showing => !showing), [setMenu])
+  const toggleMenu = useCallback(() => setMenu((showing) => !showing), [
+    setMenu,
+  ])
   return (
     <TopHeader>
       <HeaderTitle title={title} />
       <DesktopButtons>
-        {navigationButtons.map(NavButton => (
+        {navigationButtons.map((NavButton) => (
           <NavButton key={NavButton} />
         ))}
       </DesktopButtons>
@@ -31,7 +33,7 @@ export function Header({ title }) {
       </MobileToggle>
       <MobilePopover visibilityToggle={!!menu}>
         {menu
-          ? navigationButtons.map(NavButton => (
+          ? navigationButtons.map((NavButton) => (
               <NavButton key={NavButton} size="48px" onClick={toggleMenu} />
             ))
           : ''}
@@ -60,7 +62,7 @@ const TopHeader = styled.header`
 
   ${Media.phone`
     grid-template-columns: [first] 1fr [second] 48px;
-    grid-template-rows: ${props =>
+    grid-template-rows: ${(props) =>
       props.visibilityToggle ? '[first] auto [second]' : '[first]'} auto;
     height: auto;
   `};
@@ -91,11 +93,13 @@ const MobileToggle = styled.div`
     pointer-events: visible;
     align-self: center;
 
-    ${props => (props.visibilityToggle ? '&:nth-child(2)' : '&:nth-child(1)')} {
+    ${(props) =>
+      props.visibilityToggle ? '&:nth-child(2)' : '&:nth-child(1)'} {
       pointer-events: none;
     }
 
-    ${props => (props.visibilityToggle ? '&:nth-child(1)' : '&:nth-child(2)')} {
+    ${(props) =>
+      props.visibilityToggle ? '&:nth-child(1)' : '&:nth-child(2)'} {
       pointer-events: none;
       display: none;
     }
@@ -122,7 +126,7 @@ const MobileToggle = styled.div`
 const MobilePopover = styled.div`
   background-color: var(--white);
   width: 100%;
-  height: ${props => (props.visibilityToggle ? '0' : 'auto')};
+  height: ${(props) => (props.visibilityToggle ? '0' : 'auto')};
   z-index: var(--foreground);
   padding-bottom: 30px;
 
@@ -136,7 +140,7 @@ const MobilePopover = styled.div`
   justify-content: center;
 
   transition: all 500ms cubic-bezier(0.165, 0.84, 0.44, 1);
-  ${props =>
+  ${(props) =>
     props.visibilityToggle
       ? 'height: 100%; pointer-events: visible; top: 70px;'
       : 'height: 0%; pointer-events: none; top: 50px;'} ${ButtonLink} {

@@ -2,8 +2,8 @@ import styled from 'styled-components'
 import { LockFooter } from './LockStyles'
 
 const Footer = styled(LockFooter)`
-  background-color: ${props => props.backgroundColor || 'var(--link)'};
-  color: ${props => props.color || 'var(--white)'};
+  background-color: ${(props) => props.backgroundColor || 'var(--link)'};
+  color: ${(props) => props.color || 'var(--white)'};
   align-self: end;
 `
 

@@ -61,12 +61,12 @@ const accountWithBalance = {
 }
 
 storiesOf('Lock', module)
-  .addDecorator(getStory => (
+  .addDecorator((getStory) => (
     <ConfigProvider value={storyConfig}>
       <WindowProvider value={fakeWindow}>{getStory()}</WindowProvider>
     </ConfigProvider>
   ))
-  .addDecorator(getStory => (
+  .addDecorator((getStory) => (
     <div
       style={{
         backgroundColor: 'var(--offwhite)',

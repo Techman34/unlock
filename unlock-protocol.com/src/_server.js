@@ -41,7 +41,7 @@ function _server(port, dev) {
       } catch (error) {
         reject(error)
       }
-    }).listen(port, err => {
+    }).listen(port, (err) => {
       if (err) throw reject(err)
       resolve([server, app])
     })

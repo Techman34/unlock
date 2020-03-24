@@ -36,10 +36,10 @@ export function checkoutHandlerInit({
   config,
 }: checkoutHandlerInitArgs) {
   // listen for updates to state from the data iframe, and forward them to the checkout UI
-  dataIframe.on(PostMessages.UPDATE_ACCOUNT, account =>
+  dataIframe.on(PostMessages.UPDATE_ACCOUNT, (account) =>
     checkoutIframe.postMessage(PostMessages.UPDATE_ACCOUNT, account)
   )
-  dataIframe.on(PostMessages.UPDATE_ACCOUNT_BALANCE, balance => {
+  dataIframe.on(PostMessages.UPDATE_ACCOUNT_BALANCE, (balance) => {
     let balanceUpdate = balance
     if (usingManagedAccount) {
       balanceUpdate = injectDefaultBalance(balance)
@@ -49,19 +49,19 @@ export function checkoutHandlerInit({
       balanceUpdate
     )
   })
-  dataIframe.on(PostMessages.UPDATE_LOCKS, locks =>
+  dataIframe.on(PostMessages.UPDATE_LOCKS, (locks) =>
     checkoutIframe.postMessage(PostMessages.UPDATE_LOCKS, locks)
   )
-  dataIframe.on(PostMessages.UPDATE_KEYS, keys =>
+  dataIframe.on(PostMessages.UPDATE_KEYS, (keys) =>
     checkoutIframe.postMessage(PostMessages.UPDATE_KEYS, keys)
   )
-  dataIframe.on(PostMessages.UPDATE_TRANSACTIONS, transactions => {
+  dataIframe.on(PostMessages.UPDATE_TRANSACTIONS, (transactions) => {
     return checkoutIframe.postMessage(
       PostMessages.UPDATE_TRANSACTIONS,
       transactions
     )
   })
-  dataIframe.on(PostMessages.UPDATE_NETWORK, network =>
+  dataIframe.on(PostMessages.UPDATE_NETWORK, (network) =>
     checkoutIframe.postMessage(PostMessages.UPDATE_NETWORK, network)
   )
 
@@ -79,12 +79,12 @@ export function checkoutHandlerInit({
       'transactions',
     ]
 
-    updateKinds.forEach(kind =>
+    updateKinds.forEach((kind) =>
       dataIframe.postMessage(PostMessages.SEND_UPDATES, kind)
     )
   })
 
-  checkoutIframe.on(PostMessages.SET_USER_METADATA, payload => {
+  checkoutIframe.on(PostMessages.SET_USER_METADATA, (payload) => {
     dataIframe.postMessage(PostMessages.SET_USER_METADATA, payload)
   })
   dataIframe.on(PostMessages.SET_USER_METADATA_SUCCESS, () => {
@@ -95,7 +95,7 @@ export function checkoutHandlerInit({
   })
 
   // pass on any errors
-  dataIframe.on(PostMessages.ERROR, error =>
+  dataIframe.on(PostMessages.ERROR, (error) =>
     checkoutIframe.postMessage(PostMessages.ERROR, error)
   )
 
@@ -103,7 +103,7 @@ export function checkoutHandlerInit({
   dataIframe.on(PostMessages.LOCKED, () =>
     checkoutIframe.postMessage(PostMessages.LOCKED, undefined)
   )
-  dataIframe.on(PostMessages.UNLOCKED, lockAddresses =>
+  dataIframe.on(PostMessages.UNLOCKED, (lockAddresses) =>
     checkoutIframe.postMessage(PostMessages.UNLOCKED, lockAddresses)
   )
 }
@@ -164,32 +164,32 @@ export function mainWindowHandlerInit({
   iframes.data.on(PostMessages.UNLOCKED, () => {
     toggleLockState(PostMessages.UNLOCKED)
   })
-  iframes.data.on(PostMessages.ERROR, e => {
+  iframes.data.on(PostMessages.ERROR, (e) => {
     if (e === 'no ethereum wallet is available') {
       toggleLockState(PostMessages.LOCKED)
     }
   })
 
   // When the data iframe sends updates, store them in the mirror
-  iframes.data.on(PostMessages.UPDATE_LOCKS, locks => {
+  iframes.data.on(PostMessages.UPDATE_LOCKS, (locks) => {
     blockchainData.locks = locks
   })
-  iframes.data.on(PostMessages.UPDATE_ACCOUNT, address => {
+  iframes.data.on(PostMessages.UPDATE_ACCOUNT, (address) => {
     blockchainData.account = address
     if (address) {
       setCachedAccountAddress(address)
     }
   })
-  iframes.data.on(PostMessages.UPDATE_ACCOUNT_BALANCE, balance => {
+  iframes.data.on(PostMessages.UPDATE_ACCOUNT_BALANCE, (balance) => {
     blockchainData.balance = balance
   })
-  iframes.data.on(PostMessages.UPDATE_NETWORK, network => {
+  iframes.data.on(PostMessages.UPDATE_NETWORK, (network) => {
     blockchainData.network = network
   })
-  iframes.data.on(PostMessages.UPDATE_KEYS, keys => {
+  iframes.data.on(PostMessages.UPDATE_KEYS, (keys) => {
     blockchainData.keys = keys
   })
-  iframes.data.on(PostMessages.UPDATE_TRANSACTIONS, transactions => {
+  iframes.data.on(PostMessages.UPDATE_TRANSACTIONS, (transactions) => {
     blockchainData.transactions = transactions
   })
 
@@ -248,15 +248,15 @@ export function setupUserAccounts({
 
   // listen for updates to state from the data iframe, and forward them to the
   // checkout UI
-  iframes.data.on(PostMessages.UPDATE_LOCKS, locks => {
+  iframes.data.on(PostMessages.UPDATE_LOCKS, (locks) => {
     iframes.accounts.postMessage(PostMessages.UPDATE_LOCKS, locks)
   })
 
   // listen for account and network from the user accounts iframe
-  iframes.accounts.on(PostMessages.UPDATE_ACCOUNT, address => {
+  iframes.accounts.on(PostMessages.UPDATE_ACCOUNT, (address) => {
     setUserAccountAddress(address)
   })
-  iframes.accounts.on(PostMessages.UPDATE_NETWORK, network => {
+  iframes.accounts.on(PostMessages.UPDATE_NETWORK, (network) => {
     setUserAccountNetwork(network)
   })
 
@@ -315,7 +315,7 @@ export function setupUserAccountsProxyWallet({
   // when receiving a key purchase request, we either pass it to the
   // account iframe for credit card purchase if user accounts are
   // explicitly enabled, or to the crypto wallet
-  iframes.checkout.on(PostMessages.PURCHASE_KEY, request => {
+  iframes.checkout.on(PostMessages.PURCHASE_KEY, (request) => {
     iframes.accounts.postMessage(PostMessages.PURCHASE_KEY, request)
   })
 
@@ -330,7 +330,7 @@ export function setupUserAccountsProxyWallet({
     })
   })
 
-  iframes.data.on(PostMessages.WEB3, payload => {
+  iframes.data.on(PostMessages.WEB3, (payload) => {
     const { method, id }: web3MethodCall = payload
     const userAccountAddress = getUserAccountAddress()
     const userAccountNetwork = getUserAccountNetwork()
@@ -379,7 +379,7 @@ export function setupWeb3ProxyWallet({
   // when receiving a key purchase request, we either pass it to the
   // account iframe for credit card purchase if user accounts are
   // explicitly enabled, or to the crypto wallet
-  iframes.checkout.on(PostMessages.PURCHASE_KEY, request => {
+  iframes.checkout.on(PostMessages.PURCHASE_KEY, (request) => {
     iframes.data.postMessage(PostMessages.PURCHASE_KEY, request)
   })
 
@@ -426,7 +426,7 @@ export function setupWeb3ProxyWallet({
   // and to return the values. The crypto wallet uses the web3 interface, so
   // we will call its RPC handler and pass in a callback to send the result back
   // to the Web3ProxyProvider
-  iframes.data.on(PostMessages.WEB3, payload => {
+  iframes.data.on(PostMessages.WEB3, (payload) => {
     // handler for the actual web3 calls
     if (!getHasWeb3()) {
       // error - no crypto wallet
@@ -509,10 +509,10 @@ export function setupDataListeners({
     'KEYS',
     'TRANSACTIONS',
   ]
-  passThroughUpdates.forEach(name => {
+  passThroughUpdates.forEach((name) => {
     const enumKey = `UPDATE_${name}`
     const message = (PostMessages as any)[enumKey]
-    data.on(message, payload => {
+    data.on(message, (payload) => {
       checkout.postMessage(message, payload as any)
       accounts.postMessage(message, payload as any)
       ;(blockchainData as any)[name.toLowerCase()] = payload
@@ -520,7 +520,7 @@ export function setupDataListeners({
   })
 
   // This one update is different than the ones in the loop, due to the injection logic
-  data.on(PostMessages.UPDATE_ACCOUNT_BALANCE, balance => {
+  data.on(PostMessages.UPDATE_ACCOUNT_BALANCE, (balance) => {
     let balanceUpdate = balance
     if (usingManagedAccount) {
       balanceUpdate = injectDefaultBalance(balance)
@@ -529,7 +529,7 @@ export function setupDataListeners({
     blockchainData.balance = balanceUpdate
   })
 
-  data.on(PostMessages.ERROR, error => {
+  data.on(PostMessages.ERROR, (error) => {
     checkout.postMessage(PostMessages.ERROR, error)
     if (error === 'no ethereum wallet is available') {
       toggleLockState(PostMessages.LOCKED)
@@ -541,7 +541,7 @@ export function setupDataListeners({
     toggleLockState(PostMessages.LOCKED)
   })
 
-  data.on(PostMessages.UNLOCKED, lockAddresses => {
+  data.on(PostMessages.UNLOCKED, (lockAddresses) => {
     checkout.postMessage(PostMessages.UNLOCKED, lockAddresses)
     toggleLockState(PostMessages.UNLOCKED)
   })
@@ -577,7 +577,7 @@ export function setupCheckoutListeners({
       'transactions',
     ]
 
-    updateKinds.forEach(kind =>
+    updateKinds.forEach((kind) =>
       data.postMessage(PostMessages.SEND_UPDATES, kind)
     )
   })
@@ -589,7 +589,7 @@ export function setupCheckoutListeners({
   // when receiving a key purchase request, we either pass it to the
   // account iframe for credit card purchase if user accounts are
   // explicitly enabled, or to the crypto wallet
-  checkout.on(PostMessages.PURCHASE_KEY, request => {
+  checkout.on(PostMessages.PURCHASE_KEY, (request) => {
     if (usingManagedAccount) {
       accounts.postMessage(PostMessages.PURCHASE_KEY, request)
     } else {
@@ -641,11 +641,11 @@ export function setupAccountsListeners({
     data.postMessage(PostMessages.INITIATED_TRANSACTION, undefined)
   })
 
-  accounts.on(PostMessages.UPDATE_ACCOUNT, address => {
+  accounts.on(PostMessages.UPDATE_ACCOUNT, (address) => {
     setUserAccountAddress(address)
   })
 
-  accounts.on(PostMessages.UPDATE_NETWORK, network => {
+  accounts.on(PostMessages.UPDATE_NETWORK, (network) => {
     setUserAccountNetwork(network)
   })
 }

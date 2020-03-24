@@ -90,7 +90,7 @@ const account = {
 }
 
 storiesOf('Checkout', module)
-  .addDecorator(getStory => (
+  .addDecorator((getStory) => (
     <CheckoutWrapper
       hideCheckout={() => action('hideCheckout')}
       icon={paywallConfig.icon}
@@ -98,7 +98,7 @@ storiesOf('Checkout', module)
       {getStory()}
     </CheckoutWrapper>
   ))
-  .addDecorator(getStory => (
+  .addDecorator((getStory) => (
     <ConfigProvider value={config}>{getStory()}</ConfigProvider>
   ))
   .add('Checkout with 3 locks and no pending keys', () => {

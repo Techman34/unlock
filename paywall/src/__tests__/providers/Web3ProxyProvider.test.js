@@ -102,7 +102,7 @@ describe('Web3ProxyProvider', () => {
     }
   })
 
-  it('waits for receipt of PostMessages.WALLET_INFO to attempt actions', async done => {
+  it('waits for receipt of PostMessages.WALLET_INFO to attempt actions', async (done) => {
     expect.assertions(2)
     const provider = new Web3ProxyProvider(fakeWindow)
     const walletService = new WalletService({ unlockAddress })
@@ -130,7 +130,7 @@ describe('Web3ProxyProvider', () => {
     })
   })
 
-  it('posts the right message for net_version', async done => {
+  it('posts the right message for net_version', async (done) => {
     expect.assertions(2)
     const provider = new Web3ProxyProvider(fakeWindow)
     const walletService = new WalletService({ unlockAddress })

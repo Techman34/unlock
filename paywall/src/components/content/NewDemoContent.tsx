@@ -33,7 +33,7 @@ export default function NewDemoContent() {
   const [locked, setLocked] = useState('loading')
   useBeforeFirstRender(() => {
     if (window) {
-      window.addEventListener('unlockProtocol', function(event: CustomEvent) {
+      window.addEventListener('unlockProtocol', function (event: CustomEvent) {
         setLocked(event.detail)
       })
     }

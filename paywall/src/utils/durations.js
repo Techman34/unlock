@@ -61,10 +61,10 @@ export function durationsAsTextFromSeconds(seconds) {
 export function durationsAsArrayFromSeconds(seconds) {
   const d = durations(seconds, {})
   // remove all values that would map to "0"
-  const filteredValues = Object.keys(d).filter(duration =>
+  const filteredValues = Object.keys(d).filter((duration) =>
     Math.floor(d[duration])
   )
-  const asArrayOfValues = filteredValues.map(duration => {
+  const asArrayOfValues = filteredValues.map((duration) => {
     const durationFloor = Math.floor(d[duration])
     if (durationFloor !== 1) {
       // Singular should only be used when there is exactly 1; otherwise plural is needed

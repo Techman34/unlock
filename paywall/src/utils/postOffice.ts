@@ -82,7 +82,7 @@ export function setupPostOffice<T extends MessageTypes = MessageTypes>(
     )
   }
   const handlers: PostMessageHandlers = {}
-  window.addEventListener(EventTypes.MESSAGE, event => {
+  window.addEventListener(EventTypes.MESSAGE, (event) => {
     // **SECURITY CHECKS**
     // ignore messages that do not come from our target window
     if (event.source !== target || event.origin !== targetOrigin) return
@@ -92,7 +92,7 @@ export function setupPostOffice<T extends MessageTypes = MessageTypes>(
     if (typeof event.data.type !== 'string') return
     const listeners = handlers[event.data.type]
     if (listeners && listeners.size) {
-      listeners.forEach(listener => {
+      listeners.forEach((listener) => {
         if (debug) {
           // eslint-disable-next-line no-console
           console.log(
@@ -191,7 +191,7 @@ export function emitPostMessagesFrom(
   // Called every time the listener gets a message that passes
   emit: (type: PostMessages, payload: any) => void
 ) {
-  window.addEventListener(EventTypes.MESSAGE, message => {
+  window.addEventListener(EventTypes.MESSAGE, (message) => {
     // We won't operate on any message that doesn't pass the checks
     if (postMessageIsSafe(message, sourceWindow, sourceOrigin)) {
       // postMessageIsSafe asserted that the message has `type` and `payload`

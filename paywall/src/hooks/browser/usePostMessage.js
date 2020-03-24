@@ -9,7 +9,7 @@ export default function usePostMessage(local = 'iframe') {
   // track the last message sent. useRef is the equivalent to using this.lastMessage in a class-based component
   const lastMessage = useRef()
   const postMessage = useCallback(
-    message => {
+    (message) => {
       const { origin } = getRouteFromWindow(window)
       if (
         isServer ||

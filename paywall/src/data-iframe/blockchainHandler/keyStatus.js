@@ -59,7 +59,7 @@ export function linkTransactionsToKey({
   const account = key && key.owner ? key.owner.toLowerCase() : null
   const lock = key && key.lock ? key.lock.toLowerCase() : null
   const keyPurchaseTransactions = Object.values(transactions)
-    .filter(transaction => {
+    .filter((transaction) => {
       // in theory, all transactions have already been filtered this way
       // but this is a sanity check to ensure we only process
       // key purchase transactions where the key was purchased

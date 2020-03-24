@@ -4,7 +4,7 @@ import { action } from '@storybook/addon-actions'
 import { MetadataForm } from '../../components/interface/MetadataForm'
 import CheckoutWrapper from '../../components/checkout/CheckoutWrapper'
 
-const onSubmit = event => console.log(event)
+const onSubmit = (event) => console.log(event)
 
 const fields = [
   {
@@ -30,7 +30,7 @@ const fields = [
 ]
 
 storiesOf('Metadata Collection Form', module)
-  .addDecorator(getStory => (
+  .addDecorator((getStory) => (
     <CheckoutWrapper hideCheckout={() => action('hideCheckout')}>
       {getStory()}
     </CheckoutWrapper>

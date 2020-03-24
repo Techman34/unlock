@@ -88,24 +88,24 @@ NoKeyLock.defaultProps = {
 export default withConfig(NoKeyLock)
 
 const Wrapper = styled(LockWrapper)`
-  cursor: ${props => (props.disabled ? 'not-allowed ' : 'pointer')};
+  cursor: ${(props) => (props.disabled ? 'not-allowed ' : 'pointer')};
 `
 
 const Footer = styled(LockFooter)`
-  background-color: ${props =>
+  background-color: ${(props) =>
     props.disabled ? 'var(--lightgrey)' : 'var(--green)'};
-  color: ${props => (props.disabled ? 'var(--darkgrey)' : 'var(--white)')};
+  color: ${(props) => (props.disabled ? 'var(--darkgrey)' : 'var(--white)')};
 `
 
 const Body = styled(LockBody)`
   padding-top: 13px;
 
   &:hover {
-    border: ${props =>
+    border: ${(props) =>
       !props.disabled ? '1px solid var(--activegreen)' : null};
   }
   &:hover ${Footer} {
-    background-color: ${props =>
+    background-color: ${(props) =>
       !props.disabled ? 'var(--activegreen)' : null};
   }
 `

@@ -36,7 +36,7 @@ import Box from './Box'
 import Info from './Info'
 
 function wrapViewBox(WrappedComponent, viewBox) {
-  const Wrapped = props => <WrappedComponent viewBox={viewBox} {...props} />
+  const Wrapped = (props) => <WrappedComponent viewBox={viewBox} {...props} />
   return Wrapped
 }
 

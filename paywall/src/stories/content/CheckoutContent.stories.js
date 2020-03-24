@@ -106,7 +106,7 @@ const fakeWindow = {
 
 storiesOf('Checkout page', module)
   // pass in a fake window object, to avoid modifying the real body and munging storyshots
-  .addDecorator(getStory => (
+  .addDecorator((getStory) => (
     <ConfigContext.Provider value={config}>
       <WindowContext.Provider value={fakeWindow}>
         {getStory()}
@@ -122,7 +122,7 @@ storiesOf('Checkout page', module)
           source: fakeWindow.parent,
           origin: 'origin',
         }
-        fakeWindow.handlers.message.forEach(postedMessage => {
+        fakeWindow.handlers.message.forEach((postedMessage) => {
           postedMessage({
             ...messageTemplate,
             data: {
@@ -175,7 +175,7 @@ storiesOf('Checkout page', module)
           source: fakeWindow.parent,
           origin: 'origin',
         }
-        fakeWindow.handlers.message.forEach(postedMessage => {
+        fakeWindow.handlers.message.forEach((postedMessage) => {
           postedMessage({
             ...messageTemplate,
             data: {
@@ -228,7 +228,7 @@ storiesOf('Checkout page', module)
           source: fakeWindow.parent,
           origin: 'origin',
         }
-        fakeWindow.handlers.message.forEach(postedMessage => {
+        fakeWindow.handlers.message.forEach((postedMessage) => {
           postedMessage({
             ...messageTemplate,
             data: {

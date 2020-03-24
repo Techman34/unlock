@@ -71,7 +71,7 @@ export default function configure(
     providers.HTTP = getWeb3Provider(`http://${httpProvider}:8545`)
     blockTime = 10 // in mseconds.
     supportedProviders = ['HTTP']
-    isRequiredNetwork = networkId => networkId === 1984
+    isRequiredNetwork = (networkId) => networkId === 1984
   }
 
   if (env === 'dev') {
@@ -86,12 +86,12 @@ export default function configure(
 
     // we start ganache locally with a block time of 3
     blockTime = 3000
-    isRequiredNetwork = networkId => networkId === 1984
+    isRequiredNetwork = (networkId) => networkId === 1984
   }
 
   if (env === 'staging') {
     // In staging, the network can only be rinkeby
-    isRequiredNetwork = networkId => networkId === 4
+    isRequiredNetwork = (networkId) => networkId === 4
     requiredNetworkId = 4
     supportedProviders = ['Metamask', 'Opera']
 
@@ -104,7 +104,7 @@ export default function configure(
 
   if (env === 'prod') {
     // In prod, the network can only be mainnet
-    isRequiredNetwork = networkId => networkId === 1
+    isRequiredNetwork = (networkId) => networkId === 1
     requiredNetworkId = 1
 
     supportedProviders = ['Metamask', 'Opera']

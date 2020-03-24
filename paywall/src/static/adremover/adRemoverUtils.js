@@ -66,7 +66,7 @@ function setupPaywallConfig(window) {
  */
 function loadAds(document) {
   // Let's look for all ad elements
-  document.querySelectorAll('.ad').forEach(adElement => {
+  document.querySelectorAll('.ad').forEach((adElement) => {
     adElement.style.height = `${adElement.attributes['data-height'].value}px`
     adElement.style.width = `${adElement.attributes['data-width'].value}px`
     adElement.style['background-color'] = 'red'
@@ -79,7 +79,7 @@ function loadAds(document) {
  * Hides the ads on the page!
  */
 function hideAds(document) {
-  document.querySelectorAll('.ad').forEach(adElement => {
+  document.querySelectorAll('.ad').forEach((adElement) => {
     adElement.style.display = 'none'
   })
 }

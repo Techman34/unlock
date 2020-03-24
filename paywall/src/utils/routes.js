@@ -4,7 +4,7 @@ import {
   TRANSACTION_REGEXP,
 } from '../constants'
 
-export const polyfilledURL = function() {
+export const polyfilledURL = function () {
   return {
     pathname: '',
     hash: false,

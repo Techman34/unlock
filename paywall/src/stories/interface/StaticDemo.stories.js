@@ -21,7 +21,7 @@ const fakeWindow = {
 }
 
 storiesOf('StaticDemo', module)
-  .addDecorator(getStory => (
+  .addDecorator((getStory) => (
     <ConfigContext.Provider value={config}>
       <WindowContext.Provider value={fakeWindow}>
         {getStory()}

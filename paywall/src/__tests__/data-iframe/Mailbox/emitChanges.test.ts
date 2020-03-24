@@ -72,7 +72,7 @@ describe('Mailbox - emitChanges', () => {
   describe('caching', () => {
     beforeEach(() => {
       setupDefaults()
-      mailbox.getDataToSend = jest.fn(data => data)
+      mailbox.getDataToSend = jest.fn((data) => data)
     })
 
     it('should call the helper', () => {
