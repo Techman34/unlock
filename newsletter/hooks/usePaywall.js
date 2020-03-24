@@ -3,7 +3,7 @@ import configure from '../config'
 
 const config = configure()
 
-export const usePaywall = lockAddresses => {
+export const usePaywall = (lockAddresses) => {
   const [lockState, setLockState] = useState('loading')
   const [lockWithKey, setLockWithKey] = useState()
 
@@ -40,7 +40,7 @@ sc.parentNode.insertBefore(js, sc); }(document, "script"));`)
       window.document.body.appendChild(script)
 
       // Set the lock state, based on the event
-      const handler = event => {
+      const handler = (event) => {
         // WARNING: THIS IS NOT DOCUMENTED!
         // Let's look at the data that we have
         if (window.unlockProtocol && window.unlockProtocol.blockchainData) {

@@ -61,7 +61,7 @@ export const saveEmail = async (web3Provider, locks, email) => {
     userAddress.toLowerCase(),
   ])
 
-  const promises = locks.map(async lock => {
+  const promises = locks.map(async (lock) => {
     const tokenEndpoint = `${config.locksmithUri}/api/key/${lock}/user/${userAddress}`
 
     try {
